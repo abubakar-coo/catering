@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Confirmation - Once Upon a Wedding</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/flaticon_prentup.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/aos.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="css/shortcodes.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/megamenu.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .confirmation-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .confirmation-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 50px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .confirmation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%);;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .confirmation-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .confirmation-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .order-details {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .order-details h4 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #fa3131;
+            padding-bottom: 10px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #666;
+            flex: 1;
+        }
+        
+        .detail-value {
+            color: #333;
+            flex: 1;
+            text-align: right;
+        }
+        
+        .order-id {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%);;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .next-steps {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .next-steps h5 {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .next-steps ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .next-steps li {
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .contact-info {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .contact-info h5 {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+        
+        .btn-home {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%);;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(250, 49, 49, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-home:hover::before {
+            left: 100%;
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(250, 49, 49, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .btn-home:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        
+        .ticket-type-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .ticket-simple {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .ticket-vip {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .amount-highlight {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .confirmation-card {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .confirmation-title {
+                font-size: 2rem;
+            }
+            
+            .confirmation-subtitle {
+                font-size: 1rem;
+            }
+            
+            .order-details {
+                padding: 20px;
+            }
+            
+            .detail-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .detail-value {
+                text-align: left;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1 class="confirmation-title">Order Confirmed!</h1>
+            <p class="confirmation-subtitle">Your ticket order has been successfully submitted</p>
+            
+            <div class="order-id" id="orderId">
+                Order ID: Loading...
+            </div>
+            
+            <div class="order-details" id="orderDetails">
+                <h4><i class="fas fa-ticket-alt me-2"></i>Order Details</h4>
+                
+                <div class="email-status" id="emailStatus" style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 8px; padding: 15px; margin-bottom: 20px; text-align: center;">
+                    <i class="fas fa-envelope" style="color: #4caf50; margin-right: 8px;"></i>
+                    <span style="color: #2e7d32; font-weight: bold;">Confirmation email sent to your email address!</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Customer Name:</span>
+                    <span class="detail-value" id="customerName">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value" id="customerEmail">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Phone:</span>
+                    <span class="detail-value" id="customerPhone">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Event Participation:</span>
+                    <span class="detail-value" id="eventParticipation">Loading...</span>
+                </div>
+                <div id="activityInfo" style="display: none;">
+                    <div class="detail-row">
+                        <span class="detail-label">Selected Activities:</span>
+                        <span class="detail-value" id="activities">Loading...</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Activity Description:</span>
+                        <span class="detail-value" id="activityDescription">Loading...</span>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Ticket Type:</span>
+                    <span class="detail-value" id="ticketType">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Quantity:</span>
+                    <span class="detail-value" id="ticketQuantity">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Price per Ticket:</span>
+                    <span class="detail-value" id="pricePerTicket">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Total Amount:</span>
+                    <span class="detail-value">
+                        <span class="amount-highlight" id="totalAmount">Loading...</span>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Payment Method:</span>
+                    <span class="detail-value" id="paymentMethod">Loading...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Order Date:</span>
+                    <span class="detail-value" id="orderDate">Loading...</span>
+                </div>
+            </div>
+            
+            <div class="next-steps">
+                <h5><i class="fas fa-list-check me-2"></i>What Happens Next?</h5>
+                <ul>
+                    <li>We will review your order and payment details</li>
+                    <li>You will receive a confirmation email within 24 hours</li>
+                    <li>Your tickets will be sent to your email address</li>
+                    <li>If you have any questions, contact us using the details below</li>
+                </ul>
+            </div>
+            
+            <div class="contact-info">
+                <h5><i class="fas fa-phone me-2"></i>Need Help?</h5>
+                <p><strong>WhatsApp:</strong> 0322 4460129</p>
+                <p><strong>Email:</strong> Info@sohaibcatering.com</p>
+                <p><strong>Response Time:</strong> Within 24 hours</p>
+            </div>
+            
+            <a href="index.html" class="btn-home">
+                <i class="fas fa-home me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Load order data from URL parameters or localStorage
+        function loadOrderData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId') || 'OUW' + Date.now();
+            
+            // Try to get data from localStorage first
+            let orderData = null;
+            try {
+                orderData = JSON.parse(localStorage.getItem('orderData') || '{}');
+            } catch (e) {
+                console.log('No order data in localStorage');
+            }
+            
+            // If no data in localStorage, create sample data
+            if (!orderData || !orderData.personalInfo) {
+                orderData = {
+                    personalInfo: {
+                        fullName: 'Sample Customer',
+                        email: 'customer@example.com',
+                        phone: '0300-1234567'
+                    },
+                    ticketInfo: {
+                        type: 'vip',
+                        quantity: 2,
+                        pricePerTicket: 3500,
+                        total: 7000
+                    },
+                    paymentMethod: 'jazzcash'
+                };
+            }
+            
+            // Update the page with order data
+            document.getElementById('orderId').textContent = `Order ID: ${orderId}`;
+            document.getElementById('customerName').textContent = orderData.personalInfo.fullName;
+            document.getElementById('customerEmail').textContent = orderData.personalInfo.email;
+            document.getElementById('customerPhone').textContent = orderData.personalInfo.phone;
+            
+            // Update activity information
+            const eventParticipation = orderData.personalInfo.eventParticipation || 'No';
+            document.getElementById('eventParticipation').textContent = eventParticipation.charAt(0).toUpperCase() + eventParticipation.slice(1);
+            
+            if (eventParticipation === 'yes' && orderData.personalInfo.activities) {
+                const activityInfo = document.getElementById('activityInfo');
+                activityInfo.style.display = 'block';
+                
+                const activities = orderData.personalInfo.activities;
+                if (activities && activities.length > 0) {
+                    const activityText = activities.map(activity => 
+                        activity.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())
+                    ).join(', ');
+                    document.getElementById('activities').textContent = activityText;
+                } else {
+                    document.getElementById('activities').textContent = 'None selected';
+                }
+                
+                document.getElementById('activityDescription').textContent = orderData.personalInfo.activityDescription || 'None provided';
+            }
+            
+            // Update email status
+            const emailStatus = document.getElementById('emailStatus');
+            if (orderData.emailSent === false) {
+                emailStatus.style.background = '#fff3cd';
+                emailStatus.style.borderColor = '#ffc107';
+                emailStatus.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: #856404; margin-right: 8px;"></i><span style="color: #856404; font-weight: bold;">Email could not be sent. Please check your email address.</span>';
+            }
+            
+            const ticketType = orderData.ticketInfo.type === 'simple' ? 'Simple' : 'VIP';
+            const ticketTypeClass = orderData.ticketInfo.type === 'simple' ? 'ticket-simple' : 'ticket-vip';
+            document.getElementById('ticketType').innerHTML = `<span class="ticket-type-badge ${ticketTypeClass}">${ticketType}</span>`;
+            
+            document.getElementById('ticketQuantity').textContent = `${orderData.ticketInfo.quantity} ticket(s)`;
+            document.getElementById('pricePerTicket').textContent = `Rs. ${orderData.ticketInfo.pricePerTicket.toLocaleString()}`;
+            document.getElementById('totalAmount').textContent = `Rs. ${orderData.ticketInfo.total.toLocaleString()}`;
+            document.getElementById('paymentMethod').textContent = orderData.paymentMethod.charAt(0).toUpperCase() + orderData.paymentMethod.slice(1);
+            document.getElementById('orderDate').textContent = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            // Clear localStorage after showing confirmation
+            localStorage.removeItem('orderData');
+            localStorage.removeItem('ticketInfo');
+        }
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadOrderData);
+    </script>
+</body>
+
+</html>

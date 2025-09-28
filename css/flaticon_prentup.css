@@ -1,0 +1,236 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("../fonts/flaticon_prentup.ttf?de39d5e85e017a3cdc8c3651ba87bfff") format("truetype"), url("../fonts/flaticon_prentup.woff?de39d5e85e017a3cdc8c3651ba87bfff") format("woff"), url("../fonts/flaticon_prentup.woff2?de39d5e85e017a3cdc8c3651ba87bfff") format("woff2"), url("../fonts/flaticon_prentup.eot?de39d5e85e017a3cdc8c3651ba87bfff#iefix") format("embedded-opentype"), url("../fonts/flaticon_prentup.svg?de39d5e85e017a3cdc8c3651ba87bfff#flaticon_prentup") format("svg");
+}
+
+i[class^="flaticon-"]:before,
+i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-wedding-rings:before {
+    content: "\f101";
+}
+
+.flaticon-church:before {
+    content: "\f102";
+}
+
+.flaticon-fireworks:before {
+    content: "\f103";
+}
+
+.flaticon-just-married:before {
+    content: "\f104";
+}
+
+.flaticon-love-birds:before {
+    content: "\f105";
+}
+
+.flaticon-wedding-rings-1:before {
+    content: "\f106";
+}
+
+.flaticon-wedding-cake:before {
+    content: "\f107";
+}
+
+.flaticon-champagne:before {
+    content: "\f108";
+}
+
+.flaticon-placeholder:before {
+    content: "\f109";
+}
+
+.flaticon-wine:before {
+    content: "\f10a";
+}
+
+.flaticon-parents:before {
+    content: "\f10b";
+}
+
+.flaticon-wedding-arch:before {
+    content: "\f10c";
+}
+
+.flaticon-love:before {
+    content: "\f10d";
+}
+
+.flaticon-same-sex-marriage:before {
+    content: "\f10e";
+}
+
+.flaticon-wedding:before {
+    content: "\f10f";
+}
+
+.flaticon-bride:before {
+    content: "\f110";
+}
+
+.flaticon-wedding-car:before {
+    content: "\f111";
+}
+
+.flaticon-romantic-dinner:before {
+    content: "\f112";
+}
+
+.flaticon-candle:before {
+    content: "\f113";
+}
+
+.flaticon-dinner-table:before {
+    content: "\f114";
+}
+
+.flaticon-dj:before {
+    content: "\f115";
+}
+
+.flaticon-camera:before {
+    content: "\f116";
+}
+
+.flaticon-action-camera:before {
+    content: "\f117";
+}
+
+.flaticon-photographer:before {
+    content: "\f118";
+}
+
+.flaticon-wedding-arch-1:before {
+    content: "\f119";
+}
+
+.flaticon-wedding-arch-2:before {
+    content: "\f11a";
+}
+
+.flaticon-balloons:before {
+    content: "\f11b";
+}
+
+.flaticon-ribbon:before {
+    content: "\f11c";
+}
+
+.flaticon-planning:before {
+    content: "\f11d";
+}
+
+.flaticon-clothes:before {
+    content: "\f11e";
+}
+
+.flaticon-bride-1:before {
+    content: "\f11f";
+}
+
+.flaticon-wedding-cake-1:before {
+    content: "\f120";
+}
+
+.flaticon-wedding-card:before {
+    content: "\f121";
+}
+
+.flaticon-dance:before {
+    content: "\f122";
+}
+
+.flaticon-photo-camera:before {
+    content: "\f123";
+}
+
+.flaticon-left-quote:before {
+    content: "\f124";
+}
+
+.flaticon-tickets:before {
+    content: "\f125";
+}
+
+.flaticon-map:before {
+    content: "\f126";
+}
+
+.flaticon-gazebo:before {
+    content: "\f127";
+}
+
+.flaticon-phone-call:before {
+    content: "\f128";
+}
+
+.flaticon-email:before {
+    content: "\f129";
+}
+
+.flaticon-maps-and-location:before {
+    content: "\f12a";
+}
+
+.flaticon-success:before {
+    content: "\f12b";
+}
+
+.flaticon-categories:before {
+    content: "\f12c";
+}
+
+.flaticon-up-right-arrow:before {
+    content: "\f12d";
+}
+
+.flaticon-email-1:before {
+    content: "\f12e";
+}
+
+.flaticon-quote:before {
+    content: "\f12f";
+}
+
+.flaticon-quote-1:before {
+    content: "\f130";
+}
+
+.flaticon-user:before {
+    content: "\f131";
+}
+
+.flaticon-email-2:before {
+    content: "\f132";
+}
+
+.flaticon-straight-quotes:before {
+    content: "\f133";
+}
+
+.flaticon-chat-box:before {
+    content: "\f134";
+}
+
+.flaticon-location:before {
+    content: "\f135";
+}
+
+.flaticon-clock:before {
+    content: "\f136";
+}
+
+.flaticon-mail:before {
+    content: "\f137";
+}

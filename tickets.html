@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Tickets - Once Upon a Wedding</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/flaticon_prentup.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/aos.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="css/shortcodes.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/megamenu.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom Animation Styles -->
+    <style>
+        /* Website Zoom Level 90% */
+        body {
+            zoom: 0.9;
+            overflow-x: hidden;
+        }
+        
+        html {
+            overflow-x: hidden;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            body {
+                zoom: 0.95;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            body {
+                zoom: 1;
+            }
+            
+            .ticket-card {
+                margin: 0 10px;
+            }
+            
+            .ticket-type {
+                padding: 15px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                zoom: 1;
+            }
+            
+            .ticket-card {
+                margin: 0 5px;
+                padding: 20px !important;
+            }
+            
+            .ticket-type {
+                padding: 12px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .ticket-type h4 {
+                font-size: 1.2rem !important;
+            }
+            
+            .ticket-type p {
+                font-size: 0.9rem !important;
+            }
+            
+            .quantity-selector {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .quantity-buttons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .ticket-card {
+                margin: 0 2px;
+                padding: 15px !important;
+            }
+            
+            .ticket-type {
+                padding: 10px !important;
+            }
+            
+            .ticket-type h4 {
+                font-size: 1.1rem !important;
+            }
+            
+            .ticket-type p {
+                font-size: 0.8rem !important;
+            }
+            
+            .btn-ticket {
+                padding: 10px 20px !important;
+                font-size: 14px !important;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .ticket-card {
+                padding: 10px !important;
+            }
+            
+            .ticket-type {
+                padding: 8px !important;
+            }
+            
+            .btn-ticket {
+                padding: 8px 15px !important;
+                font-size: 12px !important;
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .ticket-type:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+        }
+        
+        /* Modern Button Styles */
+        .btn-modern {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%); !important;
+            color: white !important;
+            border: none !important;
+            padding: 20px 50px !important;
+            border-radius: 30px !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            margin-right: 20px !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 10px 25px rgba(250, 49, 49, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .btn-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-modern:hover::before {
+            left: 100%;
+        }
+        
+        .btn-modern:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(250, 49, 49, 0.4);
+        }
+        
+        .btn-modern:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #868e96 100%) !important;
+            box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3) !important;
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 15px 35px rgba(108, 117, 125, 0.4) !important;
+        }
+        
+        .quantity-btn {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%); !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 50% !important;
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 24px !important;
+            padding:12px !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 5px 15px rgba(250, 49, 49, 0.3) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .quantity-btn:hover {
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(250, 49, 49, 0.4);
+        }
+        
+        .quantity-btn:active {
+            transform: translateY(0) scale(0.95);
+        }
+        
+        .modal-buttons button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .modal-buttons button:active {
+            transform: translateY(0);
+        }
+        
+        .ticket-page-header {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%);;
+            color: white;
+            padding: 140px 0 80px 0;
+            text-align: center;
+        }
+        
+        .ticket-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            min-height: calc(100vh - 100px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .ticket-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .ticket-options {
+            margin-bottom: 20px;
+        }
+        
+        .quantity-selection {
+            margin-bottom: 20px;
+        }
+        
+        .total-section {
+            margin-bottom: 20px;
+        }
+        
+        .modal-buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- page start -->
+    <div class="page">
+        <!-- header start -->
+        <header id="masthead" class="header prt-header-style-01">
+
+
+            <!-- site-header-menu -->
+            <div id="site-header-menu" class="site-header-menu">
+                <div class="site-header-menu-inner prt-stickable-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!--site-navigation -->
+                                <div class="site-navigation d-flex flex-row align-items-center justify-content-between">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <!-- site-branding -->
+                                        <div class="site-branding ">
+                                            <h1>
+                                                <a class="home-link" href="index.html" title="" rel="home">
+                                                    <img id="logo-img" height="50" width="200" class="img-fluid auto_size" src="images/logo2.png" alt="logo-img">
+                                                </a>
+                                            </h1>
+                                        </div>
+                                        <!-- site-branding end -->
+                                        <div class="border-box-block">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="btn-show-menu-mobile menubar menubar--squeeze">
+                                                    <span class="menubar-box">
+                                                        <span class="menubar-inner"></span>
+                                                    </span>
+                                                </div>
+                                                <!-- menu -->
+                                                <nav class="main-menu menu-mobile" id="menu">
+                                                    <ul class="menu">
+                                                        <li class="mega-menu-item">
+                                                            <a href="index.html" class="mega-menu-link">Home</a>
+                                                        </li>
+                                                        <li class="mega-menu-item">
+                                                            <a href="contact-us.html">Contact us</a>
+                                                        </li>
+                                                        <li class="mega-menu-item active">
+                                                            <a href="tickets.html">Buy Tickets</a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                                <!-- menu end -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="header_extra d-flex flex-row align-items-center justify-content-end">
+                                        <div class="cart-info d-flex flex-row align-items-center" style="margin-right: 20px;">
+                                            <div class="cart-icon" style="position: relative; cursor: pointer;" onclick="openTicketModal()">
+                                                <i class="fa fa-shopping-cart" style="font-size: 24px; color: #fa3131;"></i>
+                                                <span id="cartCount" style="position: absolute; top: -8px; right: -8px; background: #fa3131; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold;">0</span>
+                                            </div>
+                                            <span style="margin-left: 8px; font-weight: bold; color: #333;">Cart</span>
+                                        </div>
+                                        <div class="widget_info d-flex flex-row align-items-center">
+                                            <div class="widget_content align-self-center">
+                                                <span class="d-block">Support center</span>
+                                                <a href="tel:0322 4460129">0322 4460129</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- site-navigation end-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+        <!-- Ticket Page Header -->
+        <div class="ticket-page-header">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 20px; font-weight: bold; color: white;">Buy Tickets</h1>
+                <p style="font-size: 1.2rem; margin-bottom: 0;">Once Upon a Wedding - December 20, 2025</p>
+            </div>
+        </div>
+
+        <!-- site-main start -->
+        <div class="site-main">
+            <section class="prt-row bg-base-white clearfix" style="padding: 40px 0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="ticket-card">
+                                <h2 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 2.5rem; font-weight: bold;">
+                                    <i class="fa fa-ticket-alt" style="margin-right: 15px; color: #fa3131; font-size: 2.2rem;"></i>Select Your Tickets
+                                </h2>
+                                
+                                <div class="ticket-options" style="margin-bottom: 20px;">
+                                    <div class="ticket-type" style="border: 2px solid #ddd; border-radius: 15px; padding: 20px; margin-bottom: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="selectTicketType('simple')" id="simple-ticket">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div>
+                                                <h3 style="margin: 0; color: #333; font-size: 1.2rem;">Simple Ticket</h3>
+                                                <p style="margin: 10px 0; color: #666; font-size: 0.9rem;">General admission to the event</p>
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <span style="text-decoration: line-through; color: #999; font-size: 1.2rem;">Rs. 3,500</span>
+                                                    <span style="font-weight: bold; color: #fa3131; font-size: 1.8rem;">Rs. 3,000</span>
+                                                    <span style="background: #fa3131; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">DISCOUNT</span>
+                                                </div>
+                                            </div>
+                                            <div class="ticket-radio" style="width: 25px; height: 25px; border: 3px solid #ddd; border-radius: 50%;"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="ticket-type" style="border: 2px solid #ddd; border-radius: 15px; padding: 20px; margin-bottom: 15px; cursor: pointer; transition: all 0.3s ease;" onclick="selectTicketType('vip')" id="vip-ticket">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div>
+                                                <h3 style="margin: 0; color: #333; font-size: 1.2rem;">VIP Ticket</h3>
+                                                <p style="margin: 10px 0; color: #666; font-size: 0.9rem;">Premium experience with special perks</p>
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <span style="text-decoration: line-through; color: #999; font-size: 1.2rem;">Rs. 4,500</span>
+                                                    <span style="font-weight: bold; color: #fa3131; font-size: 1.8rem;">Rs. 3,500</span>
+                                                    <span style="background: #fa3131; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">DISCOUNT</span>
+                                                </div>
+                                            </div>
+                                            <div class="ticket-radio" style="width: 25px; height: 25px; border: 3px solid #ddd; border-radius: 50%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="quantity-selection" style="margin-bottom: 40px; text-align: center;">
+                                    <label style="display: block; margin-bottom: 20px; font-weight: bold; color: #333; font-size: 1rem;">Quantity (Max 10 tickets):</label>
+                                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                                        <button onclick="decreaseQuantity()" class="quantity-btn">-</button>
+                                        <span id="quantity" style="font-size: 24px; font-weight: bold; min-width: 50px; text-align: center;">1</span>
+                                        <button onclick="increaseQuantity()" class="quantity-btn">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="total-section" style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin-bottom: 40px; text-align: center;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 1.2rem; font-weight: bold;">Total Amount:</span>
+                                        <span id="totalAmount" style="font-size: 1.5rem; font-weight: bold; color: #fa3131;">Rs. 0</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-buttons" style="text-align: center;">
+                                    <button onclick="proceedToCheckout()" class="btn-modern">
+                                        <i class="fa fa-ticket-alt" style="margin-right: 10px;"></i>Buy Tickets
+                                    </button>
+                                    <button onclick="goBack()" class="btn-modern btn-secondary">Back to Home</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- site-main end-->
+
+        <!-- footer start -->
+         <footer class="footer widget-footer bg-base-dark text-base-white clearfix">
+            <div class="first-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="widget_text">
+                                <h2>Affordable Wedding Planner and Events <span>Coordinator!</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-10">
+                        <div class="col-sm-12 col-md-3 widget-area">
+                            <div class="widget widget_text clearfix">
+                                <h3 class="widget-title">Address</h3>
+                                <div class="widget-address">
+                                    Lahore, Pakistan
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 widget-area">
+                            <div class="widget widget_cta clearfix">
+                                <h3 class="widget-title">Contact Us</h3>
+                                <p><i class="fa fa-envelope me-2"></i><a href="mailto:Info@sohaibcatering.com">Info@sohaibcatering.com</a></p>
+                                <div class="widget-call">
+                                    <i class="fa fa-phone me-2"></i>
+                                    <a href="tel:0322 4460129">0322 4460129</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 widget-area">
+                            <div class="widget link-widget clearfix">
+                                <h3 class="widget-title">Social Share</h3>
+                                <ul class="menu-footer-link">
+                                    <li><i class="fa-brands fa-facebook me-2"></i><a href="https://www.facebook.com/sohaibcaterers/">Facebook</a></li>
+                                    <li><i class="fa-brands fa-instagram me-2"></i><a href="https://www.instagram.com/sohaibcatering/">Instagram</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 widget-area">
+                            <div class="widget link-widget clearfix">
+                                <h3 class="widget-title">Get Your Ticket Now</h3>
+                                <ul class="menu-footer-link">
+                                    <li><i class="fa fa-ticket-alt" style="margin-right: 10px;"></i><a onclick="proceedToCheckout()">Buy Tickets</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="bottom-footer-text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-lg-flex align-items-center justify-content-between">
+                                <div class="copyright">
+                                    <div class="d-sm-flex align-items-center justify-content-center">
+                                        <div>Copyright © 2025 <a href="index.html"> </a>.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+        <!-- back-to-top start -->
+        <a id="totop" href="#top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- back-to-top end -->
+
+    </div>
+    <!-- page end -->
+
+    <!-- Javascript -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-migrate-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Scrolltrigger.js"></script>
+    <script src="js/SplitText.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/gsap.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/gsap-animation.js"></script>
+    <script src="js/jquery-validate.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery-waypoints.js"></script>
+    <script src="js/numinate.min.js"></script>
+    <script src="js/imagesloaded.min.js"></script>
+    <script src="js/jquery-isotope.js"></script>
+    <script src="js/circle-progress.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 120,
+            duration: 400,
+        });
+    </script>
+
+    <!-- Ticket System JavaScript -->
+    <script>
+        let selectedTicketType = null;
+        let quantity = 1;
+        
+        // Pricing structure
+        const pricing = {
+            simple: {
+                original: 3500,
+                discounted: 3000,
+                discountThreshold: 500
+            },
+            vip: {
+                original: 4500,
+                discounted: 3500,
+                discountThreshold: 500
+            }
+        };
+        
+        function selectTicketType(type) {
+            selectedTicketType = type;
+            
+            // Update visual selection
+            document.querySelectorAll('.ticket-type').forEach(ticket => {
+                ticket.style.borderColor = '#ddd';
+                ticket.querySelector('.ticket-radio').style.backgroundColor = 'transparent';
+            });
+            
+            document.getElementById(type + '-ticket').style.borderColor = '#fa3131';
+            document.getElementById(type + '-ticket').querySelector('.ticket-radio').style.backgroundColor = '#fa3131';
+            
+            updateTotal();
+        }
+        
+        function increaseQuantity() {
+            if (quantity < 10) {
+                quantity++;
+                document.getElementById('quantity').textContent = quantity;
+                updateTotal();
+            }
+        }
+        
+        function decreaseQuantity() {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('quantity').textContent = quantity;
+                updateTotal();
+            }
+        }
+        
+        function updateTotal() {
+            if (!selectedTicketType) {
+                document.getElementById('totalAmount').textContent = 'Rs. 0';
+                return;
+            }
+            
+            const price = getCurrentPrice(selectedTicketType);
+            const total = price * quantity;
+            document.getElementById('totalAmount').textContent = 'Rs. ' + total.toLocaleString();
+        }
+        
+        function getCurrentPrice(type) {
+            return pricing[type].discounted;
+        }
+        
+        function proceedToCheckout() {
+            if (!selectedTicketType) {
+                alert('Please select a ticket type');
+                return;
+            }
+            
+            const price = getCurrentPrice(selectedTicketType);
+            const total = price * quantity;
+            
+            // Store ticket information for checkout
+            const ticketInfo = {
+                type: selectedTicketType,
+                quantity: quantity,
+                pricePerTicket: price,
+                total: total,
+                originalPrice: pricing[selectedTicketType].original
+            };
+            
+            // Store in localStorage for checkout page
+            localStorage.setItem('ticketInfo', JSON.stringify(ticketInfo));
+            
+            // Update cart counter
+            updateCartCounter(quantity);
+            
+            // Show success message
+            alert(`Selected ${quantity} ${selectedTicketType.toUpperCase()} ticket(s)!\nTotal: Rs. ${total.toLocaleString()}\nProceeding to checkout...`);
+            
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        }
+        
+        function updateCartCounter(quantity) {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                const currentCount = parseInt(cartCount.textContent) || 0;
+                cartCount.textContent = currentCount + quantity;
+            }
+        }
+        
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+        
+        function openTicketModal() {
+            // This function is kept for compatibility but redirects to tickets page
+            window.location.href = 'tickets.html';
+        }
+    </script>
+    <!-- Javascript end-->
+
+</body>
+
+</html>
+
