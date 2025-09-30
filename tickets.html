@@ -279,6 +279,75 @@
         .modal-buttons {
             margin-top: 20px;
         }
+        
+        /* Universal Button Style - Hero Page Style */
+        .btn-universal {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 15px 40px !important;
+            border-radius: 30px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 10px 25px rgba(250, 49, 49, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        
+        .btn-universal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-universal:hover::before {
+            left: 100%;
+        }
+        
+        .btn-universal:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(250, 49, 49, 0.4);
+            color: white !important;
+            text-decoration: none !important;
+        }
+        
+        .btn-universal:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        
+        /* Secondary Button Style */
+        .btn-universal-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #868e96 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 15px 40px !important;
+            border-radius: 30px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        
+        .btn-universal-secondary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(108, 117, 125, 0.4);
+            color: white !important;
+            text-decoration: none !important;
+        }
     </style>
 </head>
 
@@ -425,10 +494,10 @@
                                 </div>
                                 
                                 <div class="modal-buttons" style="text-align: center;">
-                                    <button onclick="proceedToCheckout()" class="btn-modern">
+                                    <button onclick="proceedToCheckout()" class="btn-universal">
                                         <i class="fa fa-ticket-alt" style="margin-right: 10px;"></i>Buy Tickets
                                     </button>
-                                    <button onclick="goBack()" class="btn-modern btn-secondary">Back to Home</button>
+                                    <button onclick="goBack()" class="btn-universal-secondary">Back to Home</button>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,124 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  VERIFIED
+}
+
+enum PaymentMethod {
+  JS_BANK
+  MCB
+  JAZZCASH
+}
+
+enum EventParticipation {
+  YES
+  NO
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  phone     String?
+  role      UserRole @default(USER)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  orders Order[]
+
+  @@map("users")
+}
+
+model Order {
+  id                  String            @id @default(cuid())
+  orderId             String            @unique
+  userId              String?
+  fullName            String
+  phone               String
+  email               String
+  dateOfBirth         String?
+  address             String?
+  requirements        String?
+  eventParticipation  EventParticipation @default(NO)
+  activities          String
+  activityDescription String?
+  ticketType          String
+  quantity            Int
+  pricePerTicket      Float
+  totalAmount         Float
+  paymentMethod       PaymentMethod
+  paymentScreenshot   String?
+  transactionId       String?
+  status              OrderStatus       @default(PENDING)
+  qrCode              String?           @unique
+  qrCodeFilename      String?
+  isVerified          Boolean           @default(false)
+  verifiedAt          DateTime?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("orders")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String
+  message   String
+  status    String   @default("unread")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contact_messages")
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  date        DateTime
+  location    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("events")
+}
+
+model TicketType {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  isActive    Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("ticket_types")
+}

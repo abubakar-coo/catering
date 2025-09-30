@@ -983,30 +983,30 @@
                                     <h5 style="margin-bottom: 20px; color: #333;">
                                         <i class="fa fa-credit-card" style="margin-right: 10px; color: #fa3131;"></i>Payment Method
                                     </h5>
-                                    <p style="color: #666; margin-bottom: 20px;">Choose your preferred payment method. You will receive payment instructions after form submission.</p>
+                                    <p style="color: #666; margin-bottom: 20px;">Choose your preferred payment method. Click on any option below to view bank details and payment instructions.</p>
                                     
                                     <div class="payment-methods">
-                                        <div class="payment-method" onclick="selectPaymentMethod('bank')" id="bank-payment">
+                                        <div class="payment-method" onclick="selectPaymentMethod('jsbank')" id="jsbank-payment">
                                             <i class="fa fa-university" style="font-size: 30px; color: #fa3131; margin-bottom: 10px;"></i>
                                             <h6 class="mb-0">JS Bank</h6>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">SOHAIB DILSHAD</p>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">Acc Number: 0002473593</p>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">IBAN: PK42JSBL9122000002473593</p>
+                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">Click to view details</p>
                                         </div>
-                                        <div class="payment-method" onclick="selectPaymentMethod('bank')" id="bank-payment">
+                                        <div class="payment-method" onclick="selectPaymentMethod('mcb')" id="mcb-payment">
                                             <i class="fa fa-university" style="font-size: 30px; color: #fa3131; margin-bottom: 10px;"></i>
                                             <h6 class="mb-0">MCB</h6>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important"> SOHAIB DILSHAD </p>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">Acc Number: 1221484941015444</p>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">IBAN: PK53MUCB1221484941015444</p>
+                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">Click to view details</p>
                                         </div>
                                         <div class="payment-method" onclick="selectPaymentMethod('jazzcash')" id="jazzcash-payment">
                                             <i class="fa fa-wallet" style="font-size: 30px; color: #fa3131; margin-bottom: 10px;"></i>
                                             <h6 class="mb-0">JazzCash</h6>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">SOHAIB DILSHAD</p>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">Acc Number: 03224460129</p>
-                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">IBAN: PK22JCMA2602923224460129</p>
+                                            <p style="font-size: 13px; color: #666;margin-bottom:0 !important">Click to view details</p>
                                         </div>
+                                    </div>
+                                    
+                                    <!-- No Selection Message -->
+                                    <div id="noSelectionMessage" style="text-align: center; margin-top: 20px; padding: 20px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; color: #856404;">
+                                        <i class="fa fa-hand-pointer" style="font-size: 24px; margin-bottom: 10px; color: #fa3131;"></i>
+                                        <p style="margin: 0; font-weight: bold;">Please select a payment method above to view bank details</p>
                                     </div>
                                 </div>
 
@@ -1218,28 +1218,29 @@
             const paymentInfo = document.getElementById('paymentInfo');
             
             const paymentMethods = {
-                'bank': {
-                    name: 'Bank Transfer',
+                'jsbank': {
+                    name: 'JS Bank',
                     details: `
                         <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #fa3131;">
-                            <h5 style="color: #333; margin-bottom: 15px;">Bank Transfer Details</h5>
-                            <p style="margin: 8px 0;"><strong>Account Title:</strong> Sohaib Catering</p>
-                            <p style="margin: 8px 0;"><strong>Account Number:</strong> 1234567890</p>
-                            <p style="margin: 8px 0;"><strong>Bank:</strong> Allied Bank Limited</p>
-                            <p style="margin: 8px 0;"><strong>Branch:</strong> Lahore Main Branch</p>
+                            <h5 style="color: #333; margin-bottom: 15px;">JS Bank Details</h5>
+                            <p style="margin: 8px 0;"><strong>Account Title:</strong> SOHAIB DILSHAD</p>
+                            <p style="margin: 8px 0;"><strong>Account Number:</strong> 0002473593</p>
+                            <p style="margin: 8px 0;"><strong>IBAN:</strong> PK42JSBL9122000002473593</p>
                             <p style="margin: 8px 0; color: #fa3131; font-weight: bold;"><strong>Amount:</strong> Rs. ${ticketInfo ? ticketInfo.total.toLocaleString() : '0'}</p>
+                            <p style="margin: 8px 0; font-size: 14px; color: #666;">Please transfer the exact amount to this JS Bank account</p>
                         </div>
                     `
                 },
-                'easypaisa': {
-                    name: 'EasyPaisa',
+                'mcb': {
+                    name: 'MCB',
                     details: `
                         <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #fa3131;">
-                            <h5 style="color: #333; margin-bottom: 15px;">EasyPaisa Details</h5>
-                            <p style="margin: 8px 0;"><strong>Name:</strong> Sohaib Catering</p>
-                            <p style="margin: 8px 0;"><strong>Account Number:</strong> 0322 4460129</p>
+                            <h5 style="color: #333; margin-bottom: 15px;">MCB Details</h5>
+                            <p style="margin: 8px 0;"><strong>Account Title:</strong> SOHAIB DILSHAD</p>
+                            <p style="margin: 8px 0;"><strong>Account Number:</strong> 1221484941015444</p>
+                            <p style="margin: 8px 0;"><strong>IBAN:</strong> PK53MUCB1221484941015444</p>
                             <p style="margin: 8px 0; color: #fa3131; font-weight: bold;"><strong>Amount:</strong> Rs. ${ticketInfo ? ticketInfo.total.toLocaleString() : '0'}</p>
-                            <p style="margin: 8px 0; font-size: 14px; color: #666;">Send the exact amount to this EasyPaisa number</p>
+                            <p style="margin: 8px 0; font-size: 14px; color: #666;">Please transfer the exact amount to this MCB account</p>
                         </div>
                     `
                 },
@@ -1248,8 +1249,9 @@
                     details: `
                         <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #fa3131;">
                             <h5 style="color: #333; margin-bottom: 15px;">JazzCash Details</h5>
-                            <p style="margin: 8px 0;"><strong>Name:</strong> Sohaib Catering</p>
-                            <p style="margin: 8px 0;"><strong>Account Number:</strong> 0322 4460129</p>
+                            <p style="margin: 8px 0;"><strong>Account Title:</strong> SOHAIB DILSHAD</p>
+                            <p style="margin: 8px 0;"><strong>Account Number:</strong> 03224460129</p>
+                            <p style="margin: 8px 0;"><strong>IBAN:</strong> PK22JCMA2602923224460129</p>
                             <p style="margin: 8px 0; color: #fa3131; font-weight: bold;"><strong>Amount:</strong> Rs. ${ticketInfo ? ticketInfo.total.toLocaleString() : '0'}</p>
                             <p style="margin: 8px 0; font-size: 14px; color: #666;">Send the exact amount to this JazzCash number</p>
                         </div>
@@ -1259,6 +1261,12 @@
             
             paymentInfo.innerHTML = paymentMethods[method].details;
             paymentDetails.style.display = 'block';
+            
+            // Hide the no selection message
+            const noSelectionMessage = document.getElementById('noSelectionMessage');
+            if (noSelectionMessage) {
+                noSelectionMessage.style.display = 'none';
+            }
         }
         
         function goBack() {

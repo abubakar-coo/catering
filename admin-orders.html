@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Management - Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .admin-container {
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            margin: 0;
+            overflow: hidden;
+            min-height: 100vh;
+            width: 100vw;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #fa3131 0%, #ff6b6b 100%);
+            color: white;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .admin-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .admin-header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .admin-header .btn-group {
+            background: transparent;
+            border-radius: 15px;
+            padding: 6px;
+            display: flex;
+            gap: 4px;
+        }
+        
+        .admin-header .btn-group .btn {
+            margin: 0;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 12px;
+            padding: 10px 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            background: transparent;
+            color: white;
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            overflow: hidden;
+        }
+        
+        .admin-header .btn-group .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 50px;
+        }
+        
+        .admin-header .btn-group .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .admin-header .btn-group .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: none;
+            border-color: rgba(255,255,255,0.6);
+        }
+        
+        .admin-header .btn-group .btn.active {
+            background: transparent;
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .admin-header .btn-group .btn i {
+            margin-right: 6px;
+            font-size: 14px;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .admin-header .btn-group .btn span {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        
+        .admin-content {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: calc(100vh - 80px);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card div:last-child {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .order-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            padding: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .order-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status-confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .btn-admin {
+            background: linear-gradient(135deg, #fa3131 0%, #ff6b6b 100%);
+            border: none;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .btn-admin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(250, 49, 49, 0.3);
+            color: white;
+        }
+        .btn-group .btn {
+            margin-left: 0.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-group .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+                    <!-- Admin Header -->
+                    <div class="admin-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h1><i class="fas fa-crown me-3"></i>Admin Dashboard</h1>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" onclick="window.location.href='admin.html'">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>Dashboard</span>
+                                </button>
+                                <button type="button" class="btn btn-primary active" onclick="window.location.href='admin-orders.html'">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>Orders</span>
+                                </button>
+                                <button type="button" class="btn btn-warning" onclick="window.location.href='admin-messages.html'">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Contact Messages</span>
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary" onclick="exportData()">
+                                    <i class="fas fa-download"></i>
+                                    <span>Export</span>
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary" onclick="refreshData()">
+                                    <i class="fas fa-sync"></i>
+                                    <span>Refresh</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin Content -->
+                    <div class="admin-content">
+                        <!-- Statistics Cards -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-number" id="totalOrders">0</div>
+                                    <div>Total Orders</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-number" id="pendingOrders">0</div>
+                                    <div>Pending Orders</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-number" id="confirmedOrders">0</div>
+                                    <div>Confirmed Orders</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-number" id="totalRevenue">Rs. 0</div>
+                                    <div>Total Revenue</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="row mb-4">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-admin me-3" onclick="refreshData()">
+                                    <i class="fas fa-sync me-2"></i>Refresh Data
+                                </button>
+                                <button class="btn btn-admin me-3" onclick="testData()">
+                                    <i class="fas fa-bug me-2"></i>Test Data
+                                </button>
+                                <button class="btn btn-admin me-3" onclick="exportData()">
+                                    <i class="fas fa-download me-2"></i>Export Orders
+                                </button>
+                                <button class="btn btn-admin me-3" onclick="clearAllData()">
+                                    <i class="fas fa-trash me-2"></i>Clear All Data
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Orders List -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3><i class="fas fa-list me-2"></i>All Orders</h3>
+                                <div id="ordersList">
+                                    <div class="text-center text-muted py-5">
+                                        <i class="fas fa-inbox fa-3x mb-3"></i>
+                                        <p>No orders found. Orders will appear here when customers submit them.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Order Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="orderDetails">
+                    <!-- Order details will be populated here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updateOrderStatus()">Update Status</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Real orders data from server
+        let orders = [];
+
+        let currentOrderId = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshData();
+        });
+
+        // Fetch real data from server
+        async function fetchOrders() {
+            try {
+                const response = await fetch('/api/orders');
+                orders = await response.json();
+                console.log('Orders fetched:', orders);
+                console.log('Number of orders:', orders.length);
+            } catch (error) {
+                console.error('Error fetching orders:', error);
+                orders = [];
+            }
+        }
+
+        async function refreshData() {
+            await fetchOrders();
+            updateStatistics();
+            displayOrders();
+        }
+
+        function updateStatistics() {
+            const totalOrders = orders.length;
+            const pendingOrders = orders.filter(order => order.status === 'pending').length;
+            const confirmedOrders = orders.filter(order => order.status === 'confirmed').length;
+            const totalRevenue = orders
+                .filter(order => order.status === 'confirmed')
+                .reduce((sum, order) => sum + order.totalAmount, 0);
+
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('pendingOrders').textContent = pendingOrders;
+            document.getElementById('confirmedOrders').textContent = confirmedOrders;
+            document.getElementById('totalRevenue').textContent = 'Rs. ' + totalRevenue.toLocaleString();
+        }
+
+        function displayOrders() {
+            const ordersList = document.getElementById('ordersList');
+            
+            if (orders.length === 0) {
+                ordersList.innerHTML = `
+                    <div class="text-center text-muted py-5">
+                        <i class="fas fa-inbox fa-3x mb-3"></i>
+                        <p>No orders found. Orders will appear here when customers submit them.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            ordersList.innerHTML = orders.map(order => `
+                <div class="order-item">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <h5 class="mb-1">${order.orderId}</h5>
+                            <small class="text-muted">${order.customerName}</small>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="status-badge status-${order.status}">${order.status.toUpperCase()}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <strong>Rs. ${order.totalAmount.toLocaleString()}</strong>
+                        </div>
+                        <div class="col-md-2">
+                            <small>${order.paymentMethod}</small>
+                        </div>
+                        <div class="col-md-2">
+                            <small>${order.date}</small>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary" onclick="viewOrder(${order.id})">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" onclick="updateOrderStatus(${order.id})">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="cancelOrder(${order.id})">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function viewOrder(orderId) {
+            // Redirect to order detail page
+            window.location.href = `admin-order-detail.html?id=${orderId}`;
+        }
+
+        async function updateOrderStatus(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                const newStatus = order.status === 'pending' ? 'confirmed' : 'pending';
+                
+                try {
+                    const response = await fetch(`/api/orders/${orderId}/status`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ status: newStatus })
+                    });
+                    
+                    if (response.ok) {
+                        order.status = newStatus;
+                        refreshData();
+                        alert(`Order ${order.orderId} status updated to ${newStatus}`);
+                    } else {
+                        alert('Error updating order status');
+                    }
+                } catch (error) {
+                    console.error('Error updating order:', error);
+                    alert('Error updating order status');
+                }
+            }
+        }
+
+        async function cancelOrder(orderId) {
+            if (confirm('Are you sure you want to cancel this order?')) {
+                const order = orders.find(o => o.id === orderId);
+                if (order) {
+                    try {
+                        const response = await fetch(`/api/orders/${orderId}/status`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ status: 'cancelled' })
+                        });
+                        
+                        if (response.ok) {
+                            order.status = 'cancelled';
+                            refreshData();
+                            alert(`Order ${order.orderId} has been cancelled! User will receive cancellation email.`);
+                        } else {
+                            alert('Error cancelling order');
+                        }
+                    } catch (error) {
+                        console.error('Error cancelling order:', error);
+                        alert('Error cancelling order');
+                    }
+                }
+            }
+        }
+
+        async function testData() {
+            console.log('=== TESTING DATA ===');
+            console.log('Current orders array:', orders);
+            console.log('Orders length:', orders.length);
+            
+            try {
+                const response = await fetch('/api/orders');
+                const serverOrders = await response.json();
+                console.log('Server orders:', serverOrders);
+                console.log('Server orders length:', serverOrders.length);
+                
+                alert(`Local orders: ${orders.length}, Server orders: ${serverOrders.length}`);
+            } catch (error) {
+                console.error('Test error:', error);
+                alert('Error fetching data: ' + error.message);
+            }
+        }
+
+        function exportData() {
+            const data = {
+                orders: orders,
+                exportDate: new Date().toISOString(),
+                totalOrders: orders.length,
+                totalRevenue: orders.filter(o => o.status === 'confirmed').reduce((sum, o) => sum + o.totalAmount, 0)
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `orders_export_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear all order data? This action cannot be undone.')) {
+                orders = [];
+                refreshData();
+                alert('All order data has been cleared');
+            }
+        }
+    </script>
+</body>
+</html>

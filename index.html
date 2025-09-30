@@ -41,6 +41,225 @@
         body {
             zoom: 0.9;
         }
+
+        /* Hero Buy Ticket Button Styles */
+        .hero-buy-ticket-section {
+            margin-top: 2rem;
+            z-index: 10;
+            position: relative;
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn-buy-ticket {
+            background: linear-gradient(135deg, #fa3131 0%, #ff6b6b 100%);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(250, 49, 49, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            min-width: 200px;
+            text-decoration: none;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .btn-buy-ticket:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(250, 49, 49, 0.6);
+            background: linear-gradient(135deg, #ff6b6b 0%, #fa3131 100%);
+            color: white;
+        }
+
+        .btn-buy-ticket:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-buy-ticket i {
+            font-size: 1.1rem;
+        }
+        
+        /* Main Buy Ticket Button Styles */
+        .btn-buy-ticket-main {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 18px 50px !important;
+            border-radius: 30px !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 10px 25px rgba(250, 49, 49, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .btn-buy-ticket-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-buy-ticket-main:hover::before {
+            left: 100%;
+        }
+        
+        .btn-buy-ticket-main:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(250, 49, 49, 0.4);
+        }
+        
+        .btn-buy-ticket-main:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        
+        /* Universal Button Style - Hero Page Style */
+        .btn-universal {
+            background: linear-gradient(90deg, #202020ff 0%, #fa3131 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 15px 40px !important;
+            border-radius: 30px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 10px 25px rgba(250, 49, 49, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        
+        .btn-universal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-universal:hover::before {
+            left: 100%;
+        }
+        
+        .btn-universal:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(250, 49, 49, 0.4);
+            color: white !important;
+            text-decoration: none !important;
+        }
+        
+        .btn-universal:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        
+        /* Secondary Button Style */
+        .btn-universal-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #868e96 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 15px 40px !important;
+            border-radius: 30px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        
+        .btn-universal-secondary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(108, 117, 125, 0.4);
+            color: white !important;
+            text-decoration: none !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            
+            .btn-buy-ticket {
+                padding: 12px 30px;
+                font-size: 1rem;
+                min-width: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buy-ticket-section {
+                margin-top: 1.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-description {
+                font-size: 0.9rem;
+            }
+            
+            .btn-buy-ticket {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+                min-width: 160px;
+            }
+        }
+
+        /* Add to Cart Success Message Animation */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
         
         /* Responsive Design */
         @media (max-width: 1200px) {
@@ -148,6 +367,72 @@
         .modal-buttons button:active {
             transform: translateY(0);
         }
+        
+        /* Price Display Styles */
+        .price-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .original-price {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+        
+        .discount-price {
+            font-size: 24px;
+            color: #fa3131;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .discount-badge {
+            background: linear-gradient(135deg, #ff6b6b, #fa3131);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(250, 49, 49, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .prize-table {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(250, 49, 49, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .prize-table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            border-color: rgba(250, 49, 49, 0.4);
+        }
+        
+        .prize-title p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
     </style>
 
 </head>
@@ -166,7 +451,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="top_bar_contact_item">
-                                    <span>06:00 - 12:00 - ONCE UPON A WEDDING - LAHORE </span>
+                                    <span>06:00 - 12:00 - ONCE UPON A WEDDING - <a href="https://maps.app.goo.gl/2piSwLLyXYq8h9RH9" target="_blank" style="color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5);">LAHORE <i class="fas fa-external-link-alt" style="margin-left: 5px; font-size: 12px;"></i></a></span>
                                 </div>
                             </div>
                         </div>
@@ -244,6 +529,14 @@
        </h2>
                                                    <h2 class="entry-title">A WEDDING</h2>
                                                </div>
+                                               <!-- Buy Ticket Button -->
+                                               <div class="hero-buy-ticket-section text-center mt-4">
+                                                   <div class="hero-buy-ticket-content">
+                                                       <button class="btn btn-buy-ticket-main" onclick="openTicketModal()">
+                                                           <i class="fa fa-ticket-alt" style="margin-right: 10px;"></i>Buy Ticket
+                                                       </button>
+                                                   </div>
+                                               </div>
                                            </div>
                                        </div>
                                    </div>
@@ -267,12 +560,12 @@
                                     <div class="marquee-content">
                                         <div class="marquee-text">Wedding Planing</div>
                                         <div class="marquee-text">Corporate Events</div>
-                                        <div class="marquee-text">Friends Celebrate</div>
-                                        <div class="marquee-text">Operation Methods</div>
+                                        <div class="marquee-text">Friends celebration</div>
+                                        <div class="marquee-text">party decor</div>
                                         <div class="marquee-text">Birthday Party</div>
                                         <div class="marquee-text">Corporate Events</div>
-                                        <div class="marquee-text">Friends Celebrate</div>
-                                        <div class="marquee-text">Operation Methods</div>
+                                        <div class="marquee-text">Friends celebration</div>
+                                        <div class="marquee-text">party decor</div>
                                         <div class="marquee-text">Wedding Planing</div>
                                         <div class="marquee-text">Corporate Events</div>
                                     </div>
@@ -289,8 +582,8 @@
                         <div class="col-md-12 m-auto">
                             <div class="section-title title-style-center_text">
                                 <div class="title-header">
-                                    <h3>OUR EVENTS</h3>
-                                    <h2 class="title">BUY TICKETS UPCOMING EVENTS!</h2>
+                                    <h3>up coming event details</h3>
+                                    <h2 class="title">book your tickets now!</h2>
                                 </div>
                             </div>
                         </div>
@@ -323,12 +616,29 @@
                                         <div class="dash-border"></div>
                                         <div class="prize-table">
                                             <div class="prize-title">
-                                                <p>Price : VIP 4K  </p>
+                                                <p>VIP Ticket</p>
+                                                <div class="price-info">
+                                                    <span class="original-price">Rs. 4,500</span>
+                                                    <span class="discount-price">Rs. 3,500</span>
+                                                    <span class="discount-badge">Only 100 Available!</span>
+                                                </div>
+                                                <span class="main-prize"></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="prize-table mt-3">
+                                            <div class="prize-title">
+                                                <p>Elite Ticket</p>
+                                                <div class="price-info">
+                                                    <span class="original-price">Rs. 4,000</span>
+                                                    <span class="discount-price">Rs. 3,000</span>
+                                                    <span class="discount-badge">Only 100 Available!</span>
+                                                </div>
                                                 <span class="main-prize"></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="prt-btn prt-btn-size-sm my-2 prt-btn-shape-square prt-btn-style-fill prt-btn-color-gradient" href="#" onclick="openTicketModal()">
+                                    <a class="btn-universal" href="#" onclick="openTicketModal()">
                                         <i class="fa fa-ticket-alt" style="margin-right: 8px;"></i>Buy Ticket
                                     </a>
                                 </div>
@@ -341,7 +651,7 @@
                                         <img class="img-fluid" src="images/card.png" alt="" style="height:600px">
                                     </div>
                                     <!-- <div class="prt-button-link">
-                                        <a class="prt-btn prt-btn-size-sm prt-btn-shape-square prt-btn-style-fill prt-btn-color-gradient" href="contact-us.html">Buy Ticket</a>
+                                        <a class="btn-universal" href="contact-us.html">Buy Ticket</a>
                                     </div> -->
                                 </div>
                             </div>
@@ -381,7 +691,7 @@ Welcome to Once Upon a Wedding.</p>
                                 </div>
                             </div>
                             <div class="res-991-mr-0">
-                                <a class="prt-btn prt-btn-size-sm prt-btn-shape-square prt-btn-style-border prt-btn-color-dark mt-10 res-991-mt-20" href="#" onclick="openTicketModal()">
+                                <a class="btn-universal" href="#" onclick="openTicketModal()">
                                     <i class="fa fa-ticket-alt" style="margin-right: 8px;"></i>Buy Tickets
                                 </a>
                             </div>
@@ -438,7 +748,7 @@ Welcome to Once Upon a Wedding.</p>
 
                             </div>
                             <div class="res-991-mr-0">
-                                <a class="prt-btn prt-btn-size-sm prt-btn-shape-square prt-btn-style-border prt-btn-color-dark mt-10 res-991-mt-20" href="#" onclick="checkParticipationAccess()">
+                                <a class="btn-universal-secondary" href="#" onclick="checkParticipationAccess()">
                                     <i class="fa fa-ticket-alt" style="margin-right: 8px;"></i>Check Participation
                                 </a>
                             </div>
@@ -508,7 +818,7 @@ Welcome to Once Upon a Wedding.</p>
                         </div>
                         <div class="col-xl-3">
                             <div class="prt-btn-transparent">
-                                <a class="prt-btn prt-btn-size-sm prt-btn-color-transparent mt-30 res-1199-mr_15 res-991-pl-0 res-991-mb-20 ml-55 res-1199-ml-0 res-1400-ml-0 res-1199-mt-0 res-1199-mb-30" href="contact-us.html">View More Details</a>
+                                <a class="btn-universal" href="contact-us.html">View More Details</a>
                             </div>
                         </div>
                         <div class="row">
@@ -685,12 +995,12 @@ Welcome to Once Upon a Wedding.</p>
                                     <div class="marquee-content">
                                         <div class="marquee-text">Wedding Planing</div>
                                         <div class="marquee-text">Corporate Events</div>
-                                        <div class="marquee-text">Friends Celebrate</div>
-                                        <div class="marquee-text">Operation Methods</div>
+                                        <div class="marquee-text">FFriends celebration</div>
+                                        <div class="marquee-text">party decor</div>
                                         <div class="marquee-text">Birthday Party</div>
                                         <div class="marquee-text">Corporate Events</div>
-                                        <div class="marquee-text">Friends Celebrate</div>
-                                        <div class="marquee-text">Operation Methods</div>
+                                        <div class="marquee-text">Friends celebration</div>
+                                        <div class="marquee-text">party decor</div>
                                         <div class="marquee-text">Wedding Planing</div>
                                         <div class="marquee-text">Corporate Events</div>
                                     </div>
@@ -1130,6 +1440,62 @@ Welcome to Once Upon a Wedding.</p>
                     sliderButton.style.cursor = 'pointer';
                 }
             }, 1000);
+        });
+
+        // Add to Cart function
+        function addToCart() {
+            // Set default ticket (Simple ticket)
+            const defaultTicketInfo = {
+                type: 'simple',
+                quantity: 1,
+                pricePerTicket: 3000,
+                total: 3000,
+                originalPrice: 3500
+            };
+
+            // Store in localStorage for checkout page
+            localStorage.setItem('ticketInfo', JSON.stringify(defaultTicketInfo));
+
+            // Update cart counter
+            updateCartCounter(1);
+
+            // Show success message
+            showAddToCartMessage();
+
+            // Redirect to checkout after a short delay
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 1500);
+        }
+
+        // Show add to cart success message
+        function showAddToCartMessage() {
+            // Create success message
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999; animation: slideInRight 0.3s ease;">
+                    <i class="fas fa-check-circle me-2"></i>
+                    <strong>Added to Cart!</strong> Simple ticket added successfully.
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }
+
+        // Ensure Buy Ticket button works
+        document.addEventListener('DOMContentLoaded', function() {
+            const buyTicketBtn = document.querySelector('.btn-buy-ticket');
+            if (buyTicketBtn) {
+                buyTicketBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    addToCart();
+                });
+            }
         });
         
         // Event Participation Access Control
